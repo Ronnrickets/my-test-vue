@@ -1,28 +1,5 @@
 <template>
-  <v-app>
-    <v-app-bar
-    app
-    dark
-    dense
-    color="primary"
-    >
-      <v-app-bar-nav-icon @click="navDrawer = !navDrawer">
-
-      </v-app-bar-nav-icon>
-    </v-app-bar>
-    
-    <v-navigation-drawer app v-model="navDrawer">
-      <v-list>
-        <v-list-item v-for="(item, i) in navList" :key="i" :to="item.to">
-
-          <v-list-item-icon>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-item-icon>
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-
+  <v-app :style="{ background: $vuetify.theme.themes.dark.background }">
     <v-main>
       <router-view/>
     </v-main>
@@ -32,14 +9,33 @@
 <script>
 
 export default {
-  // name: 'App',
+  name: 'App',
 
   data: () => ({
-    navDrawer:false,
-    navList:[
-      {title: 'Home', icon: 'mdi-home', to:'/'},
-      {title: 'About', icon: 'mdi-information', to:'/about'},
-    ],
+    //
   }),
 };
 </script>
+
+<style>
+.block-2 {
+  width: 100%;
+  background-color: #eee;
+  text-align: center;
+  padding: 2rem 2rem 3rem;
+}
+
+.block-3 {
+    width: 75%;
+}
+
+@media only screen and (max-width: 600px) {
+  .block-3 h4 {
+      font-size: 23px !important;
+  }
+
+  .block-3 hr {
+      width: 235px;
+  }
+}
+</style>
